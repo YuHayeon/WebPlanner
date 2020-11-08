@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+    <title>Web Planner - 회원가입 화면</title>
+
+    <style>
+        #wrap{
+            width:530px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:center;
+        }
+
+        table{
+            border:3px solid skyblue
+        }
+
+        td{
+            border:1px solid skyblue
+        }
+
+        #title{
+            background-color:skyblue
+        }
+    </style>
+</head>
+<body>
+    <!-- 왼쪽, 오른쪽 바깥여백을 auto로 주면 중앙정렬된다.  -->
+    <div id="wrap">
+        <br><br>
+        <b><font size="6" color="gray">회원가입</font></b>
+        <br><br><br>
+
+        <form>
+            <table>
+                <tr>
+                    <td id="title">아이디</td>
+                    <td>
+                        <input type="text" name="userId" maxlength="20">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="title">비밀번호</td>
+                    <td>
+                        <input type="password" name="userPw " maxlength="15">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="title">비밀번호 확인</td>
+                    <td>
+                        <input type="password" name="userPw" maxlength="15">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td id="title">이름</td>
+                    <td>
+                        <input type="text" name="userName" maxlength="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title">닉네임</td>
+                    <td>
+                        <input type="text" name="userName" maxlength="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title">이메일</td>
+                    <td>
+                        <input type="text" name="email01" maxlength="30">@
+                        <select name="email02">
+                            <option>naver.com</option>
+                            <option>daum.net</option>
+                            <option>gmail.com</option>
+                            <option>dankook.ac.kr</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="가입"/>  <input type="button" value="취소">
+        </form>
+    </div>
+</body>
+</html>
