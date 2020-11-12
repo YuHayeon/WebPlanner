@@ -5,7 +5,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="memberMapper">
-	<!-- 게시판 글 작성 -->
+	<!-- 회원가입 -->
 	<insert id="register">
 	    INSERT INTO MP_MEMBER(   USERID 
 	   					       , USERPASS 
@@ -14,5 +14,13 @@
 	                 		   , #{userPass}
 	                 		   , #{userName})
     </insert>
+    
+    <!-- 로그인 -->
+	<select id="login" resultType="com.web.vo.MemberVO">
+		SELECT USERID, USERPASS 
+		  FROM MP_MEMBER
+		 WHERE USERID = #{userId}
+		   AND USERPASS = #{userPass}   
+	</select>
    
 </mapper>

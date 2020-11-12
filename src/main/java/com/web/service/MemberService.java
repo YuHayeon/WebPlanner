@@ -4,6 +4,8 @@ import com.web.vo.MemberVO;
 
 public interface MemberService {
 
-	void register(MemberVO vo) throws Exception;
+	public void register(MemberVO vo) throws Exception;
+
+	public MemberVO login(MemberVO vo) throws Exception;
 
 }

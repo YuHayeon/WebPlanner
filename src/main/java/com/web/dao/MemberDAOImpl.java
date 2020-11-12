@@ -17,6 +17,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public void register(MemberVO vo) throws Exception {
 		sql.insert("memberMapper.register", vo);
 	}
+	
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		
+		return sql.selectOne("memberMapper.login", vo);
+	}
 
 	
 }
