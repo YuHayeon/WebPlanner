@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!doctype html>
 <html>
 <head>
@@ -60,16 +60,16 @@
     }
   </style>
   <script language="javascript">
-    var today = new Date(); // ¿À´Ã ³¯Â¥
+    var today = new Date(); // ì˜¤ëŠ˜ ë‚ ì§œ
     var date = new Date();
 
-    function beforem() //ÀÌÀü ´ŞÀ» today¿¡ °ªÀ» ÀúÀå
+    function beforem() //ì´ì „ ë‹¬ì„ todayì— ê°’ì„ ì €ì¥
     {
         today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
-        build(); //¸¸µé±â
+        build(); //ë§Œë“¤ê¸°
     }
 
-    function nextm()  //´ÙÀ½ ´ŞÀ» today¿¡ ÀúÀå
+    function nextm()  //ë‹¤ìŒ ë‹¬ì„ todayì— ì €ì¥
     {
         today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
         build();
@@ -77,30 +77,30 @@
 
     function build()
     {
-        var nMonth = new Date(today.getFullYear(), today.getMonth(), 1); //ÇöÀç´ŞÀÇ Ã¹Â° ³¯
-        var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); //ÇöÀç ´ŞÀÇ ¸¶Áö¸· ³¯
-        var tbcal = document.getElementById("calendar"); // Å×ÀÌºí ´Ş·ÂÀ» ¸¸µé Å×ÀÌºí
-        var yearmonth = document.getElementById("yearmonth"); //  ³âµµ¿Í ¿ù Ãâ·ÂÇÒ°÷
-        yearmonth.innerHTML = today.getFullYear() + "³â "+ (today.getMonth() + 1) + "¿ù"; //³âµµ¿Í ¿ù Ãâ·Â
+        var nMonth = new Date(today.getFullYear(), today.getMonth(), 1); //í˜„ì¬ë‹¬ì˜ ì²«ì§¸ ë‚ 
+        var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); //í˜„ì¬ ë‹¬ì˜ ë§ˆì§€ë§‰ ë‚ 
+        var tbcal = document.getElementById("calendar"); // í…Œì´ë¸” ë‹¬ë ¥ì„ ë§Œë“¤ í…Œì´ë¸”
+        var yearmonth = document.getElementById("yearmonth"); //  ë…„ë„ì™€ ì›” ì¶œë ¥í• ê³³
+        yearmonth.innerHTML = today.getFullYear() + "ë…„ "+ (today.getMonth() + 1) + "ì›”"; //ë…„ë„ì™€ ì›” ì¶œë ¥
 
-        if(today.getMonth()+1==12) //  ´­·¶À» ¶§ ¿ùÀÌ ³Ñ¾î°¡´Â °÷
+        if(today.getMonth()+1==12) //  ëˆŒë €ì„ ë•Œ ì›”ì´ ë„˜ì–´ê°€ëŠ” ê³³
         {
-            before.innerHTML=(today.getMonth())+"¿ù";
-            next.innerHTML="1¿ù";
+            before.innerHTML=(today.getMonth())+"ì›”";
+            next.innerHTML="1ì›”";
         }
-        else if(today.getMonth()+1==1) //  1¿ù ÀÏ ¶§
+        else if(today.getMonth()+1==1) //  1ì›” ì¼ ë•Œ
         {
-        before.innerHTML="12¿ù";
-        next.innerHTML=(today.getMonth()+2)+"¿ù";
+        before.innerHTML="12ì›”";
+        next.innerHTML=(today.getMonth()+2)+"ì›”";
         }
-        else //   12¿ù ÀÏ ¶§
+        else //   12ì›” ì¼ ë•Œ
         {
-            before.innerHTML=(today.getMonth())+"¿ù";
-            next.innerHTML=(today.getMonth()+2)+"¿ù";
+            before.innerHTML=(today.getMonth())+"ì›”";
+            next.innerHTML=(today.getMonth()+2)+"ì›”";
         }
 
 
-        // ³²Àº Å×ÀÌºí ÁÙ »èÁ¦
+        // ë‚¨ì€ í…Œì´ë¸” ì¤„ ì‚­ì œ
         while (tbcal.rows.length > 2)
         {
             tbcal.deleteRow(tbcal.rows.length - 1);
@@ -109,29 +109,29 @@
         row = tbcal.insertRow();
         var cnt = 0;
 
-        // 1ÀÏ ½ÃÀÛÄ­ Ã£±â
+        // 1ì¼ ì‹œì‘ì¹¸ ì°¾ê¸°
         for (i = 0; i < nMonth.getDay(); i++)
         {
             cell = row.insertCell();
             cnt = cnt + 1;
         }
 
-        // ´Ş·Â Ãâ·Â
-        for (i = 1; i <= lastDate.getDate(); i++) // 1ÀÏºÎÅÍ ¸¶Áö¸· ÀÏ±îÁö
+        // ë‹¬ë ¥ ì¶œë ¥
+        for (i = 1; i <= lastDate.getDate(); i++) // 1ì¼ë¶€í„° ë§ˆì§€ë§‰ ì¼ê¹Œì§€
         {
             cell = row.insertCell();
             cell.innerHTML = i;
             cnt = cnt + 1;
-            if (cnt % 7 == 1) {//ÀÏ¿äÀÏ °è»ê
-                cell.innerHTML = "<font color=#FF9090>" + i//ÀÏ¿äÀÏ¿¡ »ö
+            if (cnt % 7 == 1) {//ì¼ìš”ì¼ ê³„ì‚°
+                cell.innerHTML = "<font color=#FF9090>" + i//ì¼ìš”ì¼ì— ìƒ‰
             }
-            if (cnt % 7 == 0) { // 1ÁÖÀÏÀÌ 7ÀÏ ÀÌ¹Ç·Î Åä¿äÀÏ °è»ê
-                cell.innerHTML = "<font color=#7ED5E4>" + i//Åä¿äÀÏ¿¡ »ö
-                row = calendar.insertRow();// ÁÙ Ãß°¡
+            if (cnt % 7 == 0) { // 1ì£¼ì¼ì´ 7ì¼ ì´ë¯€ë¡œ í† ìš”ì¼ ê³„ì‚°
+                cell.innerHTML = "<font color=#7ED5E4>" + i//í† ìš”ì¼ì— ìƒ‰
+                row = calendar.insertRow();// ì¤„ ì¶”ê°€
             }
             if(today.getFullYear()==date.getFullYear()&&today.getMonth()==date.getMonth()&&i==date.getDate())
             {
-                cell.bgColor = "#99FFFF"; //¿À´Ã³¯Â¥¹è°æ»ö
+                cell.bgColor = "#99FFFF"; //ì˜¤ëŠ˜ë‚ ì§œë°°ê²½ìƒ‰
             }
         }
 
@@ -143,10 +143,10 @@
   <h1><a href="home">Web Planner</a></h1>
   <div id="menu">
   <ol>
-    <li><a href="attend">Ãâ¼®</a></li>
-    <li><a href="task">°úÁ¦</a></li>
-    <li><a href="test">½ÃÇè</a></li>
-    <li><a href="grade">¼ºÀû</a></li>
+    <li><a href="attend">ì¶œì„</a></li>
+    <li><a href="task">ê³¼ì œ</a></li>
+    <li><a href="test">ì‹œí—˜</a></li>
+    <li><a href="grade">ì„±ì </a></li>
   </ol>
   <div id="article">
   <h2>Home</h2>
@@ -157,13 +157,13 @@
             <td><font size=1%; color="#B3B6B3"><label onclick="nextm()" id="next"></label></font></td>
         </tr>
         <tr>
-            <td align="center"> <font color="#FF9090">ÀÏ</font></td>
-            <td align="center"> ¿ù </td>
-            <td align="center"> È­ </td>
-            <td align="center"> ¼ö </td>
-            <td align="center"> ¸ñ </td>
-            <td align="center"> ±İ </td>
-            <td align="center"><font color=#7ED5E4>Åä</font></td>
+            <td align="center"> <font color="#FF9090">ì¼</font></td>
+            <td align="center"> ì›” </td>
+            <td align="center"> í™” </td>
+            <td align="center"> ìˆ˜ </td>
+            <td align="center"> ëª© </td>
+            <td align="center"> ê¸ˆ </td>
+            <td align="center"><font color=#7ED5E4>í† </font></td>
         </tr>
     </table>
     <div id="todolist">

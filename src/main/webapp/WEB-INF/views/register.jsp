@@ -9,7 +9,7 @@
 		$(document).ready(function(){
 			// 취소
 			$(".cencle").on("click", function(){
-				location.href = "/member/login";	    
+				location.href = "/login";	    
 			})
 		
 			$("#submit").on("click", function(){
@@ -36,7 +36,7 @@
 	</script>
 	<body>
 		<section id="container">
-			<form action="/member/register" method="post">
+			<form action="/register" method="post">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디</label>
 					<input class="form-control" type="text" id="userId" name="userId" />

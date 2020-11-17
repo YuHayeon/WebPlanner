@@ -20,14 +20,16 @@ import com.web.vo.MemberVO;
 public class MemberController {
 	
 	
-
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getlogin() throws Exception{
 
+		return "login";
+	}
 	
-	@RequestMapping(value = "member/login", method = RequestMethod.POST)
-	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String postlogin(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
@@ -36,18 +38,19 @@ public class MemberController {
 		if(login == null) {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
+			return "redirect:/login";
 		}else {
 			session.setAttribute("member", login);
+			return "redirect:/home";
 		}
 		
-		return "redirect:/";
+		
 	}
 	
-	@RequestMapping(value = "member/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception{
 		
 		session.invalidate();
-		
 		return "redirect:/";
 	}
 	
@@ -55,13 +58,13 @@ public class MemberController {
 	private MemberService service;
 	
 	// 회원가입 get
-	@RequestMapping(value = "member/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void getRegister() throws Exception {
 		logger.info("get register");
 	}
 	
 	// 회원가입 post
-	@RequestMapping(value = "member/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception {
 		logger.info("post register");
 		
