@@ -12,10 +12,16 @@
       color:black;
       text-decoration : none;
     }
-    h1{
+    #title{
       font-size : 45px;
       text-align: center;
       border-bottom : 1px solid gray;
+      margin : 0;
+      padding : 20px;
+    }
+    #sign{
+      font-size : 20px;
+      text-align: right;
       margin : 0;
       padding : 20px;
     }
@@ -46,6 +52,7 @@
       padding-left: 2%;
 
     }
+
 
     #menu{
       display : grid;
@@ -125,12 +132,12 @@
                 cell.innerHTML = "<font color=#FF9090>" + i//일요일에 색
             }
             if (cnt % 7 == 0) { // 1주일이 7일 이므로 토요일 계산
-                cell.innerHTML = "<font color=#7ED5E4>" + i//토요일에 색
+                cell.innerHTML = "<font color=#0066FF>" + i//토요일에 색
                 row = calendar.insertRow();// 줄 추가
             }
             if(today.getFullYear()==date.getFullYear()&&today.getMonth()==date.getMonth()&&i==date.getDate())
             {
-                cell.bgColor = "#99FFFF"; //오늘날짜배경색
+                cell.bgColor = "#FF99FF"; //오늘날짜배경색
             }
         }
 
@@ -139,8 +146,20 @@
 </script>
 </head>
 <body onload="build();">
-  <h1><a href="home.html">Web Planner</a></h1>
+  <div>
+    <div id="title">
+      <a href="home.html">Web Planner</a>
+      <div align="right" id="sign">
+        <tr>
+            <td > <a href="signin.html">로그인</a></td>
+            <td > <a href="signup.html">회원가입</a> </td>
+      </div>
+    </div>
+
+
+
   <div id="menu">
+
   <ol>
     <li><a href="attend.html">출석</a></li>
     <li><a href="task.html">과제</a></li>
@@ -162,7 +181,7 @@
             <td align="center"> 수 </td>
             <td align="center"> 목 </td>
             <td align="center"> 금 </td>
-            <td align="center"><font color=#7ED5E4>토</font></td>
+            <td align="center"><font color=#0066FF>토</font></td>
         </tr>
     </table>
     <div id="todolist">
@@ -180,5 +199,6 @@
     </div>
   </div>
   </div>
+</div>
 </body>
 </html>
