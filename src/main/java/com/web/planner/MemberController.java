@@ -24,8 +24,10 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getlogin() throws Exception{
+		
+		logger.info("get login");
 
-		return "login";
+		return "login3";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -39,12 +41,11 @@ public class MemberController {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/login";
+			
 		}else {
 			session.setAttribute("member", login);
 			return "redirect:/home";
 		}
-		
-		
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -57,13 +58,15 @@ public class MemberController {
 	@Inject
 	private MemberService service;
 	
-	// 회원가입 get
+	// register get
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void getRegister() throws Exception {
+	public String getRegister() throws Exception {
 		logger.info("get register");
+		
+		return "register2";
 	}
 	
-	// 회원가입 post
+	// register post
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception {
 		logger.info("post register");

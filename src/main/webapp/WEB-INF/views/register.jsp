@@ -7,11 +7,6 @@
 	</head>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				location.href = "/login";	    
-			})
-		
 			$("#submit").on("click", function(){
 				if($("#userId").val()==""){
 					alert("아이디를 입력해주세요.");
@@ -30,16 +25,16 @@
 				}
 			});
 			
-				
+			function goSingnin() {
+		        location.href="login";
+		    }	
 			
-		})
 	</script>
 	<body>
 		<section id="container">
 			<form action="/register" method="post">
-				<div class="form-group has-feedback">
-					<label class="control-label" for="userId">아이디</label>
-					<input class="form-control" type="text" id="userId" name="userId" />
+					<label for="userId">아이디</label>
+					<input type="text" id="userId" name="userId" />
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPass">패스워드</label>

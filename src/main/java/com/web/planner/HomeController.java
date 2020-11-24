@@ -1,6 +1,5 @@
 package com.web.planner;
 
-import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +32,14 @@ public class HomeController {
 	private MemberService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String direct(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		
+		logger.info("/");
+		
+		return "redirect:/login";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		
 		logger.info("home");
@@ -40,14 +47,7 @@ public class HomeController {
 		HttpSession session = req.getSession();
 		MemberVO login = service.login(vo);
 		
-		if(login == null) {
-			session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/login";
-		}else {
-			session.setAttribute("member", login);
-			return "home";
-		}
+		return "home";
 	}
 	
 }
