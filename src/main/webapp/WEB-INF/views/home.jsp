@@ -5,76 +5,28 @@
 <!doctype html>
 <html>
 <head>
-<title>Web Planner - Welcome</title>
 <meta charset="utf-8">
-<style>
-body {
-	margin: 0;
-}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/3.3/examples/theme/">
 
-a {
-	color: black;
-	text-decoration: none;
-}
+<title>Home - Web Planner</title>
 
-#title {
-	font-size: 45px;
-	text-align: center;
-	border-bottom: 1px solid gray;
-	margin: 0;
-	padding: 20px;
-}
 
-#sign {
-	font-size: 20px;
-	text-align: right;
-	margin: 0;
-	padding: 20px;
-}
+<!-- Bootstrap core CSS -->
+<link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../resources/css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link href="../resources/css/ie10-viewport-bug-workaround.css"
+	rel="stylesheet">
+<link href="../resources/css/home.css" rel="stylesheet">
 
-ol {
-	border-right: 1px solid gray;
-	width: 100px;
-	height: 250%;
-	margin: 0;
-	padding: 50px;
-}
-
-li {
-	padding-bottom: 50px;
-}
-
-tr, td {
-	border: 1px solid black;
-}
-
-#calendar {
-	border: 1px solid black;
-	text-align: center;
-	width: 80%;
-	height: 600px;
-}
-
-#todo {
-	text-align: center;
-	width: 15%;
-	height: 400px;
-	padding-left: 2%;
-}
-
-#menu {
-	display: grid;
-	grid-template-columns: 150px 1fr;
-}
-
-#menu ol {
-	padding-left: 33px;
-}
-
-#menu #article {
-	padding-left: 50px;
-}
-</style>
 <script language="javascript">
 	var today = new Date(); // 오늘 날짜
 	var date = new Date();
@@ -145,7 +97,7 @@ tr, td {
 			if (today.getFullYear() == date.getFullYear()
 					&& today.getMonth() == date.getMonth()
 					&& i == date.getDate()) {
-				cell.bgColor = "#FF99FF"; //오늘날짜배경색
+				cell.bgColor = "#6b9be3"; //오늘날짜배경색
 			}
 		}
 
@@ -162,6 +114,7 @@ tr, td {
 	}
 </script>
 </head>
+
 <body onload="build();">
 	<div>
 		<div id="title">
@@ -170,13 +123,13 @@ tr, td {
 				<form name='homeForm' method="post" action="/login">
 					<c:if test="${member == null}">
 						<div>
-							<button type="submit">로그인</button>
-							<button type="button" onclick="goRegister()">회원가입</button>
+							<button type="submit" class="label label-primary">로그인</button>
+							<button type="button" class="label label-primary" onclick="goRegister()">회원가입</button>
 						</div>
 					</c:if>
 					<c:if test="${member != null }">
 						<div>
-							<p>${member.userId}님 환영합니다.</p>
+							<p>${member.userId}님환영합니다.</p>
 							<button type="button" onclick="goLogout()">로그아웃</button>
 						</div>
 					</c:if>
@@ -184,15 +137,34 @@ tr, td {
 			</div>
 		</div>
 
-
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">Web Planner</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/home">홈</a></li>
+						<li><a href="/attend">출석</a></li>
+						<li><a href="/task">과제</a></li>
+						<li><a href="/test">시험</a></li>
+						<li><a href="/grade">성적</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
 
 		<div id="menu">
-
 			<ol>
-				<li><a href="attend">출석</a></li>
-				<li><a href="task">과제</a></li>
-				<li><a href="test">시험</a></li>
-				<li><a href="grade">성적</a></li>
+
 			</ol>
 			<div id="article">
 				<h2>Home</h2>
@@ -240,5 +212,12 @@ tr, td {
 			</div>
 		</div>
 	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script src="../resources/js/docs.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../resources/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
