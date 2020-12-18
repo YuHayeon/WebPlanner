@@ -63,7 +63,7 @@ public class MemberController {
 	public String getRegister() throws Exception {
 		logger.info("get register");
 		
-		return "register2";
+		return "register";
 	}
 	
 	// register post
@@ -73,7 +73,7 @@ public class MemberController {
 		
 		service.register(vo);
 		
-		return null;
+		return "redirect:/login";
 	}
 	
 	

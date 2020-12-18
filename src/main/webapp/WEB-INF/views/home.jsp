@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" pageEncoding="UTF-8"
-	contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!doctype html>
 <html>
 <head>
@@ -18,6 +19,77 @@
 <title>Home - Web Planner</title>
 
 
+<style>
+/* navbar */
+.navbar-default {
+    background-color: #e69ac8;
+    border-color: #E7E7E7;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #777;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
+</style>
 <!-- Bootstrap core CSS -->
 <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
@@ -97,7 +169,7 @@
 			if (today.getFullYear() == date.getFullYear()
 					&& today.getMonth() == date.getMonth()
 					&& i == date.getDate()) {
-				cell.bgColor = "#6b9be3"; //오늘날짜배경색
+				cell.bgColor = "#f5a9d3"; //오늘날짜배경색
 			}
 		}
 
@@ -118,7 +190,7 @@
 <body onload="build();">
 	<div>
 		<div id="title">
-			<a href="home">Web Planner</a>
+			<a href="home"><img src="<spring:url value='/resources/img/logo.PNG'/>"></a>
 			<div align="right" id="sign">
 				<form name='homeForm' method="post" action="/login">
 					<c:if test="${member == null}">
@@ -129,7 +201,7 @@
 					</c:if>
 					<c:if test="${member != null }">
 						<div>
-							<p>${member.userId}님환영합니다.</p>
+							<p>${member.userId}님 환영합니다.</p>
 							<button type="button" onclick="goLogout()">로그아웃</button>
 						</div>
 					</c:if>
@@ -186,32 +258,11 @@
 						<td align="center"><font color=#0066FF>토</font></td>
 					</tr>
 				</table>
-				<div id="todolist">
-					<table align="rignt" id="todo">
-
-						<tr>
-							<th text-align="bottom">ToDoList</th>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
+				
 				</div>
 			</div>
 		</div>
-	</div>
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
